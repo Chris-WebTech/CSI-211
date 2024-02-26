@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<link href="arrayAssignment.css" rel="stylesheet">
+<title>Array Assignment Miller</title>
+
+    <script>
+
+        function printArray(array,tagID,heading)
+        {
+            var arrayItem = " ";
+            for(var cntr=0; cntr<array.length;cntr++)
+            {
+                arrayItem = arrayItem + array[cntr] + "<br>";
+            }
+
+            document.getElementById(tagID).innerHTML =
+                '<font color="blue">'+
+                    heading +
+                '</font><br>' +
+                arrayItem +
+                '<hr>';
+        }// end of printArray
+        //End of array content - dispay at bottom of <form>
+        
+        function arrayFindItem(array, value)
+        {
+            var found = array.indexOf(value);
+
+            return found;
+        }
+        
+    </script>
+
+</head>
+
+<body>
+    <main>
+
+        <header>
+            <h1>Array Assignment - Christopher Miller</h1>
+        </header>
+    
+        <form method="get">
+            <input type="reset" value="Search" id="userSearch" name="tittle" onclick="searchWord()">
+            <Label for="userSearch">Search Term
+                <input type="text" id="userTerm" name="wordValue" maxlength="15">
+                <p id="p1">     </p>
+            </Label>
+            <br>
+
+            <label for="userValue">Enter Word</label>&nbsp;&nbsp;
+            <input type="text" id="userValue" name="enterValue" maxlength="15" required>
+            <br><hr><br>
+
+            <input type="radio" id="addPush" name="tittle" value=add2() onclick="add2()">&nbsp;&nbsp;
+            <label for="addPush">Push</label>
+            <br><hr><br>
+
+            <input type="radio" id="removePop" name="tittle" onclick="removeByPop()" >&nbsp;&nbsp;
+            <label for="removePop">Pop</label>
+            <br><hr><br>
+
+            <input type="radio" id="shiftTop" name="tittle" onclick="shiftFromTop()" >&nbsp;&nbsp;
+            <label for="shiftTop">Shift</label>
+            <br><hr><br>
+
+            <input type="radio" id="add2Top" name="tittle" onclick="addTop()" >&nbsp;&nbsp;
+            <label for="add2Top">Unshift</label>
+            <br><hr><br>
+
+            <input type="radio" id="addSplit" name="tittle" onclick="split1()" >&nbsp;&nbsp;
+            <label for="addSplit">Split</label>
+            <br><hr><br>
+
+            
+            <input type="radio" id="addSlice" name="tittle" onclick="splice1()" >&nbsp;&nbsp;
+            <label for="addSlice">Splice Position Index 
+                <input type="text" id="addSplice" name="indexValue" maxlength="3"> 
+                <dev id="a1">delete No of Items</dev>
+                <input type="text" id="remNum" name="indexValue" maxlength="3">
+            </label>
+            <br><hr><br>
+
+            <input type="radio" id="arrayLength" name="tittle" onclick="shortArray()">
+            <label for="arrayLength"> Array Length
+                <input type="text" id="enterLength" name="valueOfLength" maxlength="3">
+            </label>
+            
+            <br><hr><br>
+
+
+            <input type="reset" id="testMe" value="Sumbit" onclick="execute()"> 
+
+        </form>
+            <p id="p0">     </p>
+
+        <script>
+            //array
+            var wordList = ["Example"];
+
+            function add2()
+            {
+                wordList.push(document.getElementById
+                ("userValue").value);
+            };
+
+            function removeByPop()
+            {
+                wordList.pop()
+            };
+
+            function shiftFromTop()
+            {
+                wordList.shift()
+            };
+
+            function addTop()
+            {
+                wordList.unshift(document.getElementById
+                ("userValue").value);
+            };
+
+            function split1()
+            {
+                var empty = [];
+                var addMe = document.getElementById("userValue").value;
+
+                empty = addMe.split(',');
+
+                wordList = wordList.concat(empty);
+            };
+
+            function splice1()
+            {
+                var searchItem = parseFloat(document.getElementById("addSplice").value);
+                var delNum = parseFloat(document.getElementById("remNum").value);
+
+                wordList.splice(searchItem - 1,delNum);
+            }
+
+            function searchWord()
+            {
+                var findMe = document.getElementById("userTerm").value;
+
+                var foundStatus = arrayFindItem(wordList,findMe);
+
+                document.getElementById("p1").innerHTML =
+                '<font color="blue"> Search return' +
+                'index</font><br>' +
+                foundStatus + '&nbsp;&nbsp;' + wordList[foundStatus] + 
+                '<br><bh><br>';
+            };
+
+            function shortArray()
+            {
+                var userLength = document.getElementById("enterLength").value;
+                wordList.length = userLength;
+            }
+
+            function execute()
+            {  
+                printArray(wordList,"p0","Contents")
+            };
+
+        </script>
+    </main>
+</body>
+
+</html>

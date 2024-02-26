@@ -1,0 +1,71 @@
+*
+{
+    box-sizing: border-box;
+}
+
+body
+{
+    margin: 0;
+}
+
+main
+{
+    display: block;
+    height: 50vh;
+    width: 50vw;
+    margin-top: 5%;
+    margin-left: 25%;
+}
+
+form
+{
+    line-height: 1.75rem;
+}
+input[type="text"]
+{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    max-width: 100px;
+    float: right;
+}
+
+input[type="radio"]
+{
+    float: left;
+    width: 75px;
+}
+
+input[type="reset"]
+{
+    width: 100px;
+    height: 55px;
+    border-radius: 999px;
+    background-color: #00FF0F;
+}
+
+input[type="reset"]:hover
+{
+    width: 100px;
+    height: 55px;
+    border-radius: 999px;
+    font-size: 100%;
+    background-color: #00ffbb;
+}
+
+#userValue
+{
+    float: none;
+}
+
+#addSplice
+{
+    float: none;
+}
+#a1
+{
+    float: right;
+}
+
+form
+{
+    padding: 10px;
+}
